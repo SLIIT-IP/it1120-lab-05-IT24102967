@@ -1,0 +1,54 @@
+import java.util.Scanner;
+
+public class IT24102967Lab5Q2 {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        
+        System.out.print("Enter the number of new members introduced: ");
+        
+       
+        if (scanner.hasNextInt()) {
+            int numberOfMembers = scanner.nextInt();
+
+            
+        if (numberOfMembers >= 0) {
+                String prize;
+
+                
+          switch (numberOfMembers) {
+                    case 0:
+                        prize = "No Prize";
+                        break;
+                    case 1:
+                        prize = "Pen";
+                        break;
+                    case 2:
+                        prize = "Umbrella";
+                        break;
+                    case 3:
+                        prize = "Bag";
+                        break;
+                    case 4:
+                        prize = "Travelling Chair";
+                        break;
+                    default: // case when numberOfMembers is 5 or more
+                        prize = "Headphone";
+                        break;
+                }
+
+                
+                System.out.println("The prize you are entitled to is: " + prize);
+            } else {
+                
+                System.out.println("The number of new members cannot be negative.");
+            }
+        } else {
+            
+            System.out.println("Invalid input. Please enter a valid integer.");
+        }
+
+        
+        scanner.close();
+    }
+}
