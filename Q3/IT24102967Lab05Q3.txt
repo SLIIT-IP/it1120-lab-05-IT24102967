@@ -1,0 +1,59 @@
+import java.util.Scanner;
+
+public class IT24102967Lab5Q3 {
+    
+    private static final int ROOM_CHARGE_PER_DAY = 48000;
+    private static final int NO_DISCOUNT = 0;
+    private static final int DISCOUNT_10_PERCENT = 10;
+    private static final int DISCOUNT_20_PERCENT = 20;
+    private static final int MIN_DATE = 1;
+    private static final int MAX_DATE = 31;
+    private static final int MIN_DAYS_FOR_DISCOUNT = 4;
+    private static final int DAYS_FOR_MAX_DISCOUNT = 5;
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+      
+        System.out.print("Enter the start date (1-31): ");
+        int startDate = scanner.nextInt();
+        System.out.print("Enter the end date (1-31): ");
+        int endDate = scanner.nextInt();
+
+        
+        if (startDate < MIN_DATE || startDate > MAX_DATE || endDate < MIN_DATE || endDate > MAX_DATE) {
+            System.out.println("Error: Dates must be between 1 and 31.");
+            return;
+        }
+        if (startDate >= endDate) {
+            System.out.println("Error: Start date should be less than end date.");
+            return;
+        }
+
+        
+        int numberOfDaysReserved = endDate - startDate;
+
+        
+        int discountPercentage;
+        if (numberOfDaysReserved < MIN_DAYS_FOR_DISCOUNT) {
+            discountPercentage = NO_DISCOUNT;
+        } else if (numberOfDaysReserved < DAYS_FOR_MAX_DISCOUNT) {
+            discountPercentage = DISCOUNT_10_PERCENT;
+        } else {
+            discountPercentage = DISCOUNT_20_PERCENT;
+        }
+
+        
+        int totalAmount = numberOfDaysReserved * ROOM_CHARGE_PER_DAY;
+        int discountAmount = (totalAmount * discountPercentage) / 100;
+        int amountToBePaid = totalAmount - discountAmount;
+
+        
+        System.out.println("Number of days reserved: " + numberOfDaysReserved);
+        System.out.println("Discount percentage: " + discountPercentage + "%");
+        System.out.println("Total amount to be paid: Rs " + amountToBePaid);
+
+        
+        scanner.close();
+    }
+}
